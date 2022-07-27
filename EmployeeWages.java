@@ -4,34 +4,45 @@ public class EmployeeWages {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Welcome to Employee Attendance");
-		 int Part_time = 1;
-		   int  Full_time = 2;
-		   int WAGE_PER_HR = 20;
-		   int WORKING_DAYS = 20;
-		   int totalWage = 0;
-		   
-		   for (int i = 1; i <= WORKING_DAYS; i++)
-		   {
-		       int empType = (int) (Math.random() * 10 ) % 2;
-		       int workingHours =0;
-		       switch (empType)
-		       {
-		           case 1:
-		               workingHours = 4;
-		               break;
-		           case 2:
-		               workingHours = 8;
-		               break;
-		           default:
-		       }
-		       
-		       int wage = workingHours * WAGE_PER_HR;
-		       System.out.println("Day " + i + " wage is:" + wage);
-		       totalWage += wage;
-		   }
-		   System.out.println("Total wage for a month is " + totalWage);        
-	}
+		System.out.println("Welcome to Employee Wage Computation");
+	       
+        int Wages_perhr=20;
+        int Full_dayhr=8;
+        int Part_timehr=4;
+        int Workingday_permonth=20;
+        int Total_workinghr=100;
+        int totalHours=0;
+        int day=0;
+        int dailyWage=0;
+        int totalWage=0;
+        
+
+       while ((totalHours < Total_workinghr) && (day < Workingday_permonth)) {
+            int attendence = (int) (Math.floor(Math.random() * 10)) % 2;
+
+
+            switch (attendence) {
+
+                case 1:
+                    dailyWage = Wages_perhr * Full_dayhr;
+                    totalHours += Full_dayhr;
+                    break;
+
+                case 2:
+                    dailyWage = Wages_perhr * Part_timehr;
+                    totalHours =Part_timehr;
+                    break;
+
+                default:
+                    break;
+            }
+            totalWage = dailyWage;
+            day++;
+        }
+        System.out.println("Total work hours is : "+ totalHours);
+        System.out.println("Total work days are: " + day);
+        System.out.println("Total wage is: " + totalWage);
+
+
+ }
 }
-		
-		
