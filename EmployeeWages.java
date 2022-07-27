@@ -3,17 +3,26 @@ package com.employee;
 public class EmployeeWages {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Attendence");
-		
-		 int Attendance=1; 
-		  double randomCheck= (Math.floor(Math.random()*10))%2;
-		  if (Attendance==randomCheck) {
-			  System.out.println("Employee is present");
+		System.out.println ("Welcome to Employee Attendance");
+		 int noOfhourperday = 8;
+		 int Wageperhr = 20;
+		 
+		  int Attendance=1; 
+		  double randomCheck= (Math.floor(Math.random()*10)) %2;
+		  
+		  if (Attendance == randomCheck) {
 			  
-		  } else {
-			  System.out.println("Employee is absent");
+			  if(noOfhourperday == 8) {
+			  System.out.println("Employee is present");
+			  int totalWage = noOfhourperday * Wageperhr;
+			  System.out.println("wage per day is:" + totalWage);
+			  
+			  }  
+		  } 
+			  
+			   else {
+			  System.out.println(" Employee is Absent");
 		  }
 
 			}
-
-}
+		}
