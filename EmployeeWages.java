@@ -3,6 +3,7 @@ package com.employee;
 public class EmployeeWages {
 
 	public static void main(String[] args) {
+		
 		System.out.println("Welcome to Employee Attendance");
 		 int dailyWage = 0;
 		 int noofpartHourperday = 4;
@@ -27,7 +28,8 @@ public class EmployeeWages {
 		 System.out.println("Employee is absent");
 		    break;
 		}
-
-
-		}
+	}
 }
+
+		
+		
