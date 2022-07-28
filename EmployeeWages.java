@@ -4,45 +4,29 @@ public class EmployeeWages {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Welcome to Employee Wage Computation");
-	       
-        int Wages_perhr=20;
-        int Full_dayhr=8;
-        int Part_timehr=4;
-        int Workingday_permonth=20;
-        int Total_workinghr=100;
-        int totalHours=0;
-        int day=0;
-        int dailyWage=0;
-        int totalWage=0;
-        
-
-       while ((totalHours < Total_workinghr) && (day < Workingday_permonth)) {
-            int attendence = (int) (Math.floor(Math.random() * 10)) % 2;
-
-
-            switch (attendence) {
-
-                case 1:
-                    dailyWage = Wages_perhr * Full_dayhr;
-                    totalHours += Full_dayhr;
-                    break;
-
-                case 2:
-                    dailyWage = Wages_perhr * Part_timehr;
-                    totalHours =Part_timehr;
-                    break;
-
-                default:
-                    break;
-            }
-            totalWage = dailyWage;
-            day++;
-        }
-        System.out.println("Total work hours is : "+ totalHours);
-        System.out.println("Total work days are: " + day);
-        System.out.println("Total wage is: " + totalWage);
-
-
- }
+		System.out.println("Welcome to Employee Attendance");
+		
+		EmployeeWages Wage= new EmployeeWages();
+		Wage.Employee();
+		}
+		public void Employee() {
+	          int noOfhourperday = 8;
+	          int Wageperhr = 20;
+	          int Attendance=1; 
+	  double randomCheck= (Math.floor(Math.random()*10)) %2;
+	  if (Attendance == randomCheck) {
+		  
+		  if(noOfhourperday == 8) {
+		  System.out.println("Employee is present");
+		  int totalWage = noOfhourperday * Wageperhr;
+		  System.out.println("wage per day is:" + totalWage);
+		  
+		  }  
+	  } 
+		  
+		   else {
+		  System.out.println(" Employee is Absent");
+	  }   
+	}	
+				
 }
