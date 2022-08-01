@@ -26,6 +26,4 @@ public class Multiple_Companies {
 	
 }
 
-	
-
 

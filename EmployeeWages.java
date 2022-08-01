@@ -1,5 +1,14 @@
 package com.employee;
 
+interface empWageBuilder{
+	
+	public void addCompanyEmpWage(String company, int wagePerhour, 
+			                         int working_DayperMonth, int fullDayhour); 
+	public void computeEmpWage();
+	public int getTotalWage(String company);
+}
+
+
 public class EmployeeWages {
 	
 	public static final int IS_PART_TIME = 1;
@@ -59,5 +68,5 @@ public class EmployeeWages {
 		empWage.addCompanyEmpWage("Dmart",200,20,8);
 		empWage.computeEmpWage();
 	}
-	
-	}
+ 
+}
