@@ -2,68 +2,62 @@ package com.employee;
 
 public class EmployeeWages {
 	
-	private String company;
-	private int wagePerhour;
-	private int working_DayperMonth=0;
-	private int fullDayhour;
-	private int totalEmpWage;
+	public static final int IS_PART_TIME = 1;
+	public static final int IS_FULL_TIME = 2;
 	
-	public EmployeeWages(String company,int wagePerhour,int working_DayperMonth,int fullDayhour ) {
-		this.company = company;
-		this.wagePerhour = wagePerhour;
-		this.working_DayperMonth = working_DayperMonth;
-		this.fullDayhour = fullDayhour;
+	private int numOfCompany = 0;
+	private Multiple_Companies[] companyEmpWageArray;
+	
+	public  EmployeeWages() {
+		companyEmpWageArray = new Multiple_Companies[5];
 	}
 	
+	private void addCompanyEmpWage(String company, int wagePerhour, int working_DayperMonth, int fullDayhour) {
+		companyEmpWageArray[numOfCompany] = new Multiple_Companies(company,wagePerhour,working_DayperMonth,fullDayhour );
+	    numOfCompany++;
+	}
 	
-	public void computeEmpWage() {
+	private void computeEmpWage() {
+		for(int i=0;i<numOfCompany;i++) {
+ 			companyEmpWageArray[i].settotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
+            System.out.println(companyEmpWageArray[i]);		
+		}
+	}
+	
+	public int computeEmpWage(Multiple_Companies Multiple_Companies) {
 		  int totalWorkinghour = 0;
 		  int days = 0; 
-		  System.out.println(company);
-	      while (totalWorkinghour <= 100 && days <20 ){
+	      int empHrs = 0;	
+	      while (totalWorkinghour <= Multiple_Companies.wagePerhour && days < Multiple_Companies.working_DayperMonth ){
 			 days = days + 1;
 			 int attendance = (int)(Math.random() *10 )%2;
 			 switch(attendance){
 				
-				case 0 : calculateEmployeeWage();
-		    	         break;
+				case IS_PART_TIME : empHrs = 4;
+				                    break;
 				
-				case 1 : int partTimehour = fullDayhour / 2;
-				         int partTimeWage = partTimehour * wagePerhour * working_DayperMonth;
-				         System.out.println("Wage Per Hour\t:"+ wagePerhour +
-				                            "\nWorking Days \t:"+ working_DayperMonth +
-				                            "\nWorking Hour \t:"+ partTimehour + 
-				                            "\nPartime Employee wage is : "+ partTimeWage);
-		    
-		    	         break;
+				case IS_FULL_TIME: empHrs = 8;
+		                           break;
 		    	        
-				default: System.out.println("Employee Wage = 0");        
+				default: empHrs = 0;        
 		       }
-			 totalWorkinghour = totalWorkinghour + 1;
-			 System.out.println();
+			 totalWorkinghour = totalWorkinghour + empHrs;
+			// System.out.println(totalWorkinghour );
+			 System.out.println("Day : " + days + " Emp hrs :" + empHrs);
+			
 	       }
-	      int totalEmpWage  = totalWorkinghour * wagePerhour * working_DayperMonth;
-	      System.out.println("Total Full time Employee Wage for "+ company+" is:" + totalEmpWage);
+	      return totalWorkinghour *Multiple_Companies.working_DayperMonth;
 	}
 	
+
 	
-	public void calculateEmployeeWage() {
-		int dailyWage = wagePerhour * fullDayhour * working_DayperMonth;
-		System.out.println("Wage Per Hour\t:"+ wagePerhour +
-				           "\nWorking Days \t:"+ working_DayperMonth +
-				           "\nWorking Hour \t:"+ fullDayhour + 
-				           "\nEmployee wage is : "+ dailyWage);
-	}
-
-
 	public static void main(String[] args) {
 		
 		System.out.println(" Welcome to Employee Wage Computation ");
-		EmployeeWages amazon = new EmployeeWages("Amazon", 200, 2, 20);
-	amazon.computeEmpWage();
-	
-		EmployeeWages flipkart = new EmployeeWages("Flipkart",100,4,20);
-		flipkart.computeEmpWage();
+		EmployeeWages empWage = new EmployeeWages();
+		empWage.addCompanyEmpWage("Reliance",100,20,4);
+		empWage.addCompanyEmpWage("Dmart",200,20,8);
+		empWage.computeEmpWage();
 	}
- 
-}
+	
+	}
